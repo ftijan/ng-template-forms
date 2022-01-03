@@ -5,4 +5,4 @@
 ## Other sources used:
 - [Bootstrap 4](https://getbootstrap.com/docs/4.6/getting-started/introduction/) for styles
 - [PutsReq](https://putsreq.com/) for HTTP request/response mocking
-- [ngx-bootstrap](https://valor-software.com/ngx-bootstrap) - Boostrap-based Angular component library
+- [ngx-bootstrap](https://valor-software.com/ngx-bootstrap) - Bootstrap-based Angular component library
