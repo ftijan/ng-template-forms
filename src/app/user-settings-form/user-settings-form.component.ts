@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../data/data.service';
 import { UserSettings } from '../data/user-settings';
 
@@ -26,12 +26,16 @@ export class UserSettingsFormComponent implements OnInit, OnDestroy {
   public postError = false;
   public postErrorMessage = '';
 
+  subscriptionTypes: Observable<string[]> | undefined;
+
   constructor(private dataService: DataService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.subscriptionTypes = this.dataService.getSubscriptionTypes();
+  }
 
   ngOnDestroy(): void {
-    this.sub?.unsubscribe();
+    this.sub?.unsubscribe();    
   }
 
   onSubmit(form: NgForm) {

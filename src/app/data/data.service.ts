@@ -12,6 +12,10 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+  getSubscriptionTypes(): Observable<string[]> {
+    return of(['Annual', 'Monthly', 'Lifetime']);
+  }
+
   postUserSettingsForm(userSettings: UserSettings): Observable<any> {
     return this.http.post(this.putsReqMockUri, userSettings);
     //return of(userSettings);
