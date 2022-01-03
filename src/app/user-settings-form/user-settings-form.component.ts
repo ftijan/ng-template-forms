@@ -18,6 +18,8 @@ export class UserSettingsFormComponent implements OnInit, OnDestroy {
     notes: 'here are some notes...'
   }
 
+  singleModel = "On";
+
   // Prevent overwriting original data on cancel or back navigation.
   // Would need deep cloning on highly nested data hierarchy:
   userSettings: UserSettings = { ...this.originalUserSettings };
