@@ -18,7 +18,9 @@ export class UserSettingsFormComponent implements OnInit, OnDestroy {
     notes: 'here are some notes...'
   }
 
+  // placeholder models for ngx-bootstrap components
   singleModel = "On";
+  startDate: Date = new Date();
 
   // Prevent overwriting original data on cancel or back navigation.
   // Would need deep cloning on highly nested data hierarchy:
