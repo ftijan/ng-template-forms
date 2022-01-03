@@ -7,10 +7,19 @@
             <label for="name">Name</label>
             <!-- HTML5 validation props: required minlegth="" maxlength="" (+ regex: pattern="" + types: type="number" + min="" and max="") -->
             <!-- add ng variable reference with: #variableName -->
-            <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]="userSettings.name" required #classTest />
+            <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]="userSettings.name" required #classTest #propertyTest="ngModel" />
             <div>
               DEBUG VALUE: {{ classTest.value }} |
               DEBUG CLASSES: {{ classTest.className }}
+            </div>
+            <div>
+              DEBUG MODEL VALUES:
+              dirty: {{ propertyTest.dirty }} |
+              pristine: {{ propertyTest.pristine }} |
+              touched: {{ propertyTest.touched }} |
+              untouched: {{ propertyTest.untouched }} |
+              valid: {{ propertyTest.valid }} |
+              invalid: {{ propertyTest.invalid }} |
             </div>
         </div>
 
