@@ -1,0 +1,134 @@
+<div class="container">
+    <h2>User Settings</h2>
+    <!-- template reference variable: #form="ngForm" -->
+    <!-- turn on HTML5 validation with property: ngNativeValidate -->
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <!-- HTML5 validation props: required minlegth="" maxlength="" (+ regex: pattern="" + types: type="number" + min="" and max="") -->
+            <!-- add ng variable reference with: #variableName -->
+            <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]="userSettings.name" required 
+            #classTest #propertyTest="ngModel" #nameField="ngModel"
+            (blur)="onBlur(nameField)"
+            [class.field-error]="form.submitted && nameField.invalid" />
+            <!-- validation on blur: -->
+            <!-- <div [hidden]="nameField.valid || nameField.untouched" class="alert alert-danger">
+              Enter a name
+            </div> -->
+            <!-- validation on form submit: -->
+            <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
+              Enter a name
+            </div>
+            <!-- <div>
+              DEBUG VALUE: {{ classTest.value }} |
+              DEBUG CLASSES: {{ classTest.className }}
+            </div> -->
+            <!-- <div>
+              DEBUG MODEL VALUES:
+              dirty: {{ propertyTest.dirty }} |
+              pristine: {{ propertyTest.pristine }} |
+              touched: {{ propertyTest.touched }} |
+              untouched: {{ propertyTest.untouched }} |
+              valid: {{ propertyTest.valid }} |
+              invalid: {{ propertyTest.invalid }} |
+            </div> -->
+        </div>
+
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" name="singleModel"
+            [(ngModel)]="singleModel" btnCheckbox
+            btnCheckboxTrue="On" btnCheckboxFalse="Off">
+            Toggle {{ singleModel }}
+          </button>
+        </div>
+
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="text" placeholder="Start Date" class="form-control"
+                [(ngModel)]="startDate" name="startDate" id="startDate"
+                bsDatepicker>
+                <!-- date range: bsDaterangepicker -->
+            <div>DEBUG DATE: {{ startDate }}</div>
+        </div>
+
+        <div class="form-group">
+            <label for="startTime">Start Time</label>
+            <timepicker [(ngModel)]="startTime" name="startTime" id="startTime"></timepicker>
+            <div>DEBUG TIME: {{ startTime }}</div>
+        </div>
+
+        <div class="form-group">            
+            User Rating
+            <rating [(ngModel)]="userRating" [max]="maxRating" [readonly]="isRatingReadonly"
+                name="userRating" id="userRating" 
+                [titles]="['one','two','three','four','five','six','seven','eight','nine','ten']">
+            </rating>            
+            <div>DEBUG RATING: {{ userRating }}</div>
+        </div>
+
+        <div class="form-check form-group">
+            <input class="form-check-input" type="checkbox" id="emailOffers" name="emailOffers" [(ngModel)]="userSettings.emailOffers">
+            <label class="form-check-label" for="emailOffers">
+              Email Special Offers
+            </label>
+        </div>
+
+        <p>User Interface Style</p>
+        <div class="form-group">
+            <div class="btn-group">
+              <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle" name="interfaceStyle" btnRadio="light" tabindex="0" role="button">
+                Light
+              </label>
+              <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle" name="interfaceStyle" btnRadio="medium" tabindex="0" role="button">
+                Medium
+              </label>
+              <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle" name="interfaceStyle" btnRadio="dark" tabindex="0" role="button">
+                Dark
+              </label>
+            </div>
+
+            <!-- <div class="form-check">
+                <input class="form-check-input" type="radio" name="interfaceStyle" id="lightInterface" value="light" [(ngModel)]="userSettings.interfaceStyle">
+                <label class="form-check-label" for="lightInterface">
+                  Light
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="interfaceStyle" id="mediumInterface" value="medium" [(ngModel)]="userSettings.interfaceStyle">
+                <label class="form-check-label" for="mediumInterface">
+                  Medium
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="interfaceStyle" id="darkInterface" value="dark" [(ngModel)]="userSettings.interfaceStyle">
+                <label class="form-check-label" for="darkInterface">
+                  Dark
+                </label>
+              </div> -->
+        </div>
+        
+        <div class="form-group">
+            <label for="subscriptionType">Subscription Type</label>
+            <select class="form-control" id="subscriptionType" name="subscriptionType" [(ngModel)]="userSettings.subscriptionType">
+                <option *ngFor="let type of subscriptionTypes | async">
+                  {{ type }}
+                </option>                
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea class="form-control" id="notes" name="notes" rows="3" [(ngModel)]="userSettings.notes"></textarea>
+        </div>
+
+        <div *ngIf="postError" class="alert alert-danger">
+          {{ postErrorMessage }}
+        </div>        
+
+        <button class="btn btn-primary">Send</button>        
+    </form>
+
+    <div>
+      DEBUG VALUES: {{ form.value | json}}
+    </div>
+</div>
