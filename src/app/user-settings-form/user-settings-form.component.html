@@ -2,14 +2,21 @@
     <h2>User Settings</h2>
     <!-- template reference variable: #form="ngForm" -->
     <!-- turn on HTML5 validation with property: ngNativeValidate -->
-    <form #form="ngForm">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
         <div class="form-group">
             <label for="name">Name</label>
             <!-- HTML5 validation props: required minlegth="" maxlength="" (+ regex: pattern="" + types: type="number" + min="" and max="") -->
             <!-- add ng variable reference with: #variableName -->
             <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]="userSettings.name" required 
-            #classTest #propertyTest="ngModel" #nameField="ngModel" />
-            <div [hidden]="nameField.valid || nameField.untouched" class="alert alert-danger">
+            #classTest #propertyTest="ngModel" #nameField="ngModel"
+            (blur)="onBlur(nameField)"
+            [class.field-error]="form.submitted && nameField.invalid" />
+            <!-- validation on blur: -->
+            <!-- <div [hidden]="nameField.valid || nameField.untouched" class="alert alert-danger">
+              Enter a name
+            </div> -->
+            <!-- validation on form submit: -->
+            <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
               Enter a name
             </div>
             <!-- <div>

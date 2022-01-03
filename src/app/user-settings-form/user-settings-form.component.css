@@ -1,3 +1,9 @@
-.ng-invalid:not(form).ng-touched {
+/* when using individual input validation checks*/
+/* .ng-invalid:not(form).ng-touched {
+    border: 1px solid red;
+} */
+
+/* when using onSubmit validation checks*/
+.field-error {
     border: 1px solid red;
 }
