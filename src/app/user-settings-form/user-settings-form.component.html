@@ -75,6 +75,10 @@
         <div class="form-group">
             <label for="notes">Notes</label>
             <textarea class="form-control" id="notes" name="notes" rows="3" [(ngModel)]="userSettings.notes"></textarea>
+        </div>
+
+        <div *ngIf="postError" class="alert alert-danger">
+          {{ postErrorMessage }}
         </div>        
 
         <button class="btn btn-primary">Send</button>        
