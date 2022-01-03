@@ -57,6 +57,15 @@
             <div>DEBUG TIME: {{ startTime }}</div>
         </div>
 
+        <div class="form-group">            
+            User Rating
+            <rating [(ngModel)]="userRating" [max]="maxRating" [readonly]="isRatingReadonly"
+                name="userRating" id="userRating" 
+                [titles]="['one','two','three','four','five','six','seven','eight','nine','ten']">
+            </rating>            
+            <div>DEBUG RATING: {{ userRating }}</div>
+        </div>
+
         <div class="form-check form-group">
             <input class="form-check-input" type="checkbox" id="emailOffers" name="emailOffers" [(ngModel)]="userSettings.emailOffers">
             <label class="form-check-label" for="emailOffers">

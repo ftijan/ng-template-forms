@@ -22,6 +22,9 @@ export class UserSettingsFormComponent implements OnInit, OnDestroy {
   singleModel = "On";
   startDate: Date = new Date();
   startTime: Date = new Date();
+  userRating = 0;
+  maxRating = 10;
+  isRatingReadonly = false;
 
   // Prevent overwriting original data on cancel or back navigation.
   // Would need deep cloning on highly nested data hierarchy:
